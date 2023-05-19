@@ -95,4 +95,38 @@ router.post('/store', function (req, res, next) {
 
 })
 
+/**
+ * EDIT posts
+ */
+router.get('/edit/(:id)',function(req,res,next) {
+
+    let id = req.params.id;
+
+    connection.query('SELECT * FROM posts EHERE id = ' + id,function(err,rows,fields){
+        // if there is an error on the query
+        if(err) throw err
+
+         // if user not found
+         if(rows.length <= 0){
+            req.flash('error','Post Data with ID ' + id + ' is not found')
+            res.redirect('/posts')
+         }
+         //if there is a data
+         else {
+            res.render('posts/edit', {
+                id: rows[0].id,
+                title: rows[0].title,
+                content: rows[0].content
+            })
+         }
+
+
+    })
+})
+
+
+
+
+
+
 module.exports = router;
