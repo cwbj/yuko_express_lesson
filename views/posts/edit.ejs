@@ -20,17 +20,16 @@
                     <% } %>
                 <div class="card border-0 shadow rounded">
                     <div class="card-body">
-                        <form action="/posts/store" method="post">
+                        <form action="/posts/update/<%= id %>" method="post">
                             <div class="form-group">
                                 <label>Title</label>
                                 <input type="text" class="form-control" name="title" value="<%= title %>" placeholder="input Title Post">
                             </div>
                             <div class="form-group">
-                                <label>Konten</label>
+                                <label>Contents</label>
                                 <textarea class="form-control" name="content" rows="4" placeholder="input Contents Post"><%= content %></textarea>
                             </div>
-                            <button type="submit" class="btn btn-primary">SAVE</button>
-                            <button type="reset" class="btn btn-warning">RESET</button>
+                            <button type="submit" class="btn btn-primary">update</button>
                         </form>
                     </div>
                 </div>
