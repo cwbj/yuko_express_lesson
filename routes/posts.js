@@ -190,35 +190,27 @@ router.post('/update/:id', function (req, res, next) {
 /**
  * Delete POST
  */
-router.post('/delete/:id', function (req, res, next) {
+
+router.get('/delete/(:id)', function (req, res, next) {
 
     let id = req.params.id;
-    let title = req.body.title;
-    let content = req.body.content;
-    let errors = false;
-
-    if (title.length === 0) {
-        errors = true;
-
 
         // query
         connection.query('DELETE FROM posts WHERE id = ' + id, function (err, result) {
             if (err) {
                 // display message
-                req.flash('error', err)
+                req.flash('error', err);
                 // render
-                res.redirect('/posts', )
+                res.redirect('/posts')
 
             } else {
                 //display message
                 req.flash('success', 'The data is deleted!');
                 // render
-                res.redirect('/posts', );
+                res.redirect('/posts')
 
             }
-        })
-    }
-
-})
+        });
+});
 
 module.exports = router;
